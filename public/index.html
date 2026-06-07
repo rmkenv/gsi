@@ -79,6 +79,12 @@
   </div>
   <div class="header-right">
     <div id="last-updated">Loading...</div>
+    <button id="unit-toggle" onclick="toggleUnit()"
+      style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;
+             border:1px solid #30363d;background:#21262d;color:#e6edf3;
+             cursor:pointer;letter-spacing:0.3px;">
+      &deg;C / &deg;F
+    </button>
     <a href="https://github.com/rmkenv" target="_blank" style="font-size:11px;color:#58a6ff;text-decoration:none;">github.com/rmkenv</a>
   </div>
 </header>
@@ -108,6 +114,31 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { m
 
 // ── State ─────────────────────────────────────────────────────────────────────
 let gsiData = null, activeGrid = null, zoneMarkers = {};
+let useFahrenheit = false;
+
+function toggleUnit() {
+  useFahrenheit = !useFahrenheit;
+  document.getElementById('unit-toggle').textContent = useFahrenheit ? '°F / °C' : '°C / °F';
+  // Re-render sidebar zone panel if a grid is active
+  if (activeGrid && gsiData) {
+    renderZonePanel(gsiData.grids[activeGrid]);
+  }
+  // Re-render scoreboard (no temps there, but keep consistent)
+  if (gsiData) renderGridList();
+}
+
+function fmt(celsius) {
+  if (celsius == null) return '-';
+  if (useFahrenheit) return (celsius * 9/5 + 32).toFixed(1) + '°F';
+  return celsius.toFixed(1) + '°C';
+}
+
+function fmtAnomaly(celsius) {
+  if (celsius == null) return '-';
+  // Anomaly delta: multiply by 9/5 but don't add 32
+  const val = useFahrenheit ? celsius * 9/5 : celsius;
+  return (val > 0 ? '+' : '') + val.toFixed(1) + (useFahrenheit ? '°F' : '°C');
+}
 
 // ── Utils ─────────────────────────────────────────────────────────────────────
 function levelColor(l) { return {CRITICAL:'#ef4444',HIGH:'#f97316',MODERATE:'#eab308',LOW:'#22c55e'}[l]||'#6b7280'; }
@@ -152,7 +183,7 @@ function renderMapMarkers() {
       const level = zone.level_fore || 'LOW';
       const color = levelColor(level);
       const raw = zone.raw || {};
-      const tempStr = raw.temp_anomaly_c != null ? (raw.temp_anomaly_c > 0 ? '+' : '') + raw.temp_anomaly_c + '&deg;C' : '-';
+      const tempStr = fmtAnomaly(raw.temp_anomaly_c);
       const marker = L.circleMarker([zone.lat, zone.lon], {
         radius: 8 + gsi * 16, fillColor: color, color: '#ffffff',
         weight: 1, fillOpacity: 0.75, opacity: 0.6
@@ -193,7 +224,7 @@ function renderZonePanel(grid) {
   const zones = Object.entries(grid.zones).filter(([,z])=>!z.error).sort(([,a],[,b])=>(b.gsi_forecast||0)-(a.gsi_forecast||0));
   document.getElementById('zone-cards').innerHTML = zones.map(([name,zone]) => {
     const comp = zone.components||{}, raw = zone.raw||{};
-    const tempStr = raw.temp_anomaly_c != null ? (raw.temp_anomaly_c>0?'+':'')+raw.temp_anomaly_c+'&deg;C' : '-';
+    const tempStr = fmtAnomaly(raw.temp_anomaly_c);
     const compBars = Object.entries(comp).map(([k,v]) => `
       <div class="comp-bar-row">
         <div class="comp-bar-label">${compLabels[k]||k}</div>
