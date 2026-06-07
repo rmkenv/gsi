@@ -195,9 +195,9 @@ function renderMapMarkers() {
         <div class="popup-row">GSI 2023: <span>${(zone.gsi_historical||0).toFixed(3)}</span></div>
         <hr style="border-color:#30363d;margin:6px 0">
         <div class="popup-row">Temp anomaly: <span>${tempStr}</span></div>
-        <div class="popup-row">UHI intensity: <span>${raw.uhi_intensity_c||'-'}&deg;C</span></div>
-        <div class="popup-row">Current temp: <span>${raw.current_temp_c||'-'}&deg;C</span></div>
-        <div class="popup-row">7-day max: <span>${raw.forecast_max_c||'-'}&deg;C</span></div>
+        <div class="popup-row">UHI intensity: <span>${fmt(raw.uhi_intensity_c)}</span></div>
+        <div class="popup-row">Current temp: <span>${fmt(raw.current_temp_c)}</span></div>
+        <div class="popup-row">7-day max: <span>${fmt(raw.forecast_max_c)}</span></div>
       `, { maxWidth: 240 });
       marker.on('click', () => { selectGrid(grid.eia_code); map.panTo([zone.lat, zone.lon], {animate:true}); });
       marker.addTo(map);
@@ -239,9 +239,9 @@ function renderZonePanel(grid) {
         </div>
         <div class="metric-row">
           <div class="metric"><div class="metric-label">Temp &Delta;</div><div class="metric-value" style="color:${(raw.temp_anomaly_c>2)?'#f97316':'#e6edf3'}">${tempStr}</div></div>
-          <div class="metric"><div class="metric-label">UHI</div><div class="metric-value" style="color:${(raw.uhi_intensity_c>10)?'#ef4444':'#e6edf3'}">${raw.uhi_intensity_c||'-'}&deg;C</div></div>
-          <div class="metric"><div class="metric-label">7d Max</div><div class="metric-value">${raw.forecast_max_c||'-'}&deg;C</div></div>
-          <div class="metric"><div class="metric-label">Now</div><div class="metric-value">${raw.current_temp_c||'-'}&deg;C</div></div>
+          <div class="metric"><div class="metric-label">UHI</div><div class="metric-value" style="color:${(raw.uhi_intensity_c>10)?'#ef4444':'#e6edf3'}">${fmt(raw.uhi_intensity_c)}</div></div>
+          <div class="metric"><div class="metric-label">7d Max</div><div class="metric-value">${fmt(raw.forecast_max_c)}</div></div>
+          <div class="metric"><div class="metric-label">Now</div><div class="metric-value">${fmt(raw.current_temp_c)}</div></div>
         </div>
         <div class="comp-bars">${compBars}</div>
       </div>`;
