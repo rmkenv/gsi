@@ -1,25 +1,5 @@
 {
   "version": 2,
   "public": true,
-  "builds": [
-    {
-      "src": "public/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/public/$1"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/data/(.*).json",
-      "headers": [
-        { "key": "Cache-Control", "value": "s-maxage=3600, stale-while-revalidate=7200" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
-      ]
-    }
-  ]
+  "outputDirectory": "public"
 }
