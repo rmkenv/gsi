@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grid Stress Index</title>
+  <title>Grid Stress Index — IQSpatial</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <style>
@@ -238,218 +238,29 @@ function compBarColor(key) {
   return c[key] || '#6b7280';
 }
 
-// ── FIXED: absolute path with leading slash ──────────────────────────────────
-async function loadData() {
-  const paths = [
-    '/data/gsi_latest.json',          // absolute — works on Vercel
-    './data/gsi_latest.json',         // relative fallback
-    'data/gsi_latest.json'            // bare fallback
-  ];
+// ── Seed data (fallback if fetch fails) ──────────────────────────────────────
+const SEED_DATA = {"generated_at":"2026-06-07T14:10:52.223092+00:00","grids":{"ERCO":{"label":"ERCOT","region":"Texas","eia_code":"ERCO","map_center":[30.5,-97.5],"gsi_mean":0.664,"level":"HIGH","color":"#f97316","zones":{"Houston":{"lat":29.76,"lon":-95.37,"grid_zone":"HOUSTON","gsi_historical":0.663,"gsi_current":0.461,"gsi_forecast":0.664,"level_hist":"HIGH","level_curr":"MODERATE","level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.39,"uhi":0.52,"reserve_margin":0.82,"renew_shortfall":0.61},"raw":{"temp_anomaly_c":2.7,"uhi_intensity_c":8.4,"current_temp_c":26.5,"forecast_max_c":35.9}},"Dallas":{"lat":32.78,"lon":-96.8,"grid_zone":"NORTH","gsi_historical":0.635,"gsi_current":0.443,"gsi_forecast":0.706,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.36,"uhi":0.46,"reserve_margin":0.82,"renew_shortfall":0.61},"raw":{"temp_anomaly_c":2.5,"uhi_intensity_c":7.6,"current_temp_c":22.6,"forecast_max_c":38.0}},"San Antonio":{"lat":29.42,"lon":-98.49,"grid_zone":"SOUTH","gsi_historical":0.68,"gsi_current":0.417,"gsi_forecast":0.589,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.59,"uhi":0.4,"reserve_margin":0.82,"renew_shortfall":0.61},"raw":{"temp_anomaly_c":4.1,"uhi_intensity_c":6.6,"current_temp_c":25.9,"forecast_max_c":36.0}},"Austin":{"lat":30.27,"lon":-97.74,"grid_zone":"SOUTH","gsi_historical":0.662,"gsi_current":0.421,"gsi_forecast":0.653,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.51,"uhi":0.41,"reserve_margin":0.82,"renew_shortfall":0.61},"raw":{"temp_anomaly_c":3.6,"uhi_intensity_c":6.7,"current_temp_c":26.8,"forecast_max_c":37.2}}}},"PJM":{"label":"PJM","region":"Mid-Atlantic/Midwest","eia_code":"PJM","map_center":[40.0,-77.5],"gsi_mean":0.726,"level":"HIGH","color":"#f97316","zones":{"Philadelphia":{"lat":39.95,"lon":-75.17,"grid_zone":"PECO","gsi_forecast":0.72,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.11,"uhi":0.56,"reserve_margin":0.75,"renew_shortfall":0.58},"raw":{"temp_anomaly_c":0.8,"uhi_intensity_c":9.0,"current_temp_c":25.2,"forecast_max_c":34.6}},"Baltimore":{"lat":39.29,"lon":-76.61,"grid_zone":"BGE","gsi_forecast":0.744,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.04,"uhi":0.62,"reserve_margin":0.75,"renew_shortfall":0.58},"raw":{"temp_anomaly_c":0.3,"uhi_intensity_c":9.9,"current_temp_c":26.6,"forecast_max_c":34.6}},"Chicago":{"lat":41.88,"lon":-87.63,"grid_zone":"ComEd","gsi_forecast":0.796,"level_fore":"CRITICAL","color_fore":"#ef4444","components":{"temp_anomaly":0.01,"uhi":1.0,"reserve_margin":0.75,"renew_shortfall":0.58},"raw":{"temp_anomaly_c":0.1,"uhi_intensity_c":17.3,"current_temp_c":20.3,"forecast_max_c":32.9}},"DC":{"lat":38.91,"lon":-77.04,"grid_zone":"Pepco","gsi_forecast":0.639,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.0,"uhi":0.46,"reserve_margin":0.75,"renew_shortfall":0.58},"raw":{"temp_anomaly_c":0.0,"uhi_intensity_c":7.6,"current_temp_c":27.9,"forecast_max_c":33.8}}}},"CISO":{"label":"CAISO","region":"California","eia_code":"CISO","map_center":[36.5,-119.5],"gsi_mean":0.792,"level":"CRITICAL","color":"#ef4444","zones":{"Los Angeles":{"lat":34.05,"lon":-118.25,"grid_zone":"LADWP","gsi_forecast":0.638,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.0,"uhi":0.52,"reserve_margin":0.88,"renew_shortfall":0.72},"raw":{"temp_anomaly_c":-1.4,"uhi_intensity_c":8.4,"current_temp_c":18.1,"forecast_max_c":30.7}},"San Francisco":{"lat":37.77,"lon":-122.42,"grid_zone":"PG&E","gsi_forecast":0.925,"level_fore":"CRITICAL","color_fore":"#ef4444","components":{"temp_anomaly":0.0,"uhi":1.0,"reserve_margin":0.88,"renew_shortfall":0.72},"raw":{"temp_anomaly_c":-2.3,"uhi_intensity_c":20.3,"current_temp_c":10.5,"forecast_max_c":28.6}},"Sacramento":{"lat":38.58,"lon":-121.49,"grid_zone":"SMUD","gsi_forecast":0.779,"level_fore":"CRITICAL","color_fore":"#ef4444","components":{"temp_anomaly":0.3,"uhi":0.38,"reserve_margin":0.88,"renew_shortfall":0.72},"raw":{"temp_anomaly_c":2.1,"uhi_intensity_c":6.2,"current_temp_c":12.7,"forecast_max_c":41.5}},"San Diego":{"lat":32.72,"lon":-117.16,"grid_zone":"SDG&E","gsi_forecast":0.827,"level_fore":"CRITICAL","color_fore":"#ef4444","components":{"temp_anomaly":0.0,"uhi":1.0,"reserve_margin":0.88,"renew_shortfall":0.72},"raw":{"temp_anomaly_c":-0.3,"uhi_intensity_c":23.9,"current_temp_c":17.3,"forecast_max_c":26.3}}}},"MISO":{"label":"MISO","region":"Midwest/South","eia_code":"MISO","map_center":[40.0,-88.0],"gsi_mean":0.48,"level":"MODERATE","color":"#eab308","zones":{"Minneapolis":{"lat":44.98,"lon":-93.27,"grid_zone":"MISO-MN","gsi_forecast":0.52,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.18,"uhi":0.53,"reserve_margin":0.55,"renew_shortfall":0.42},"raw":{"temp_anomaly_c":1.2,"uhi_intensity_c":8.5,"current_temp_c":18.2,"forecast_max_c":29.1}},"Indianapolis":{"lat":39.77,"lon":-86.16,"grid_zone":"MISO-IN","gsi_forecast":0.49,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.14,"uhi":0.45,"reserve_margin":0.55,"renew_shortfall":0.42},"raw":{"temp_anomaly_c":1.0,"uhi_intensity_c":7.2,"current_temp_c":21.3,"forecast_max_c":31.4}},"New Orleans":{"lat":29.95,"lon":-90.07,"grid_zone":"MISO-LA","gsi_forecast":0.55,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.21,"uhi":0.43,"reserve_margin":0.55,"renew_shortfall":0.42},"raw":{"temp_anomaly_c":1.5,"uhi_intensity_c":6.8,"current_temp_c":27.4,"forecast_max_c":33.2}},"Detroit":{"lat":42.33,"lon":-83.05,"grid_zone":"MISO-MI","gsi_forecast":0.47,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.13,"uhi":0.57,"reserve_margin":0.55,"renew_shortfall":0.42},"raw":{"temp_anomaly_c":0.9,"uhi_intensity_c":9.1,"current_temp_c":19.8,"forecast_max_c":30.2}}}},"NYIS":{"label":"NYISO","region":"New York","eia_code":"NYIS","map_center":[42.5,-75.0],"gsi_mean":0.56,"level":"HIGH","color":"#f97316","zones":{"New York City":{"lat":40.71,"lon":-74.01,"grid_zone":"NYC","gsi_forecast":0.68,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.2,"uhi":0.78,"reserve_margin":0.62,"renew_shortfall":0.48},"raw":{"temp_anomaly_c":1.4,"uhi_intensity_c":12.4,"current_temp_c":23.1,"forecast_max_c":32.8}},"Buffalo":{"lat":42.89,"lon":-78.88,"grid_zone":"WEST","gsi_forecast":0.48,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.09,"uhi":0.38,"reserve_margin":0.62,"renew_shortfall":0.48},"raw":{"temp_anomaly_c":0.6,"uhi_intensity_c":6.1,"current_temp_c":19.2,"forecast_max_c":28.4}},"Albany":{"lat":42.65,"lon":-73.75,"grid_zone":"CAPITAL","gsi_forecast":0.51,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.1,"uhi":0.36,"reserve_margin":0.62,"renew_shortfall":0.48},"raw":{"temp_anomaly_c":0.7,"uhi_intensity_c":5.8,"current_temp_c":20.4,"forecast_max_c":30.1}},"Long Island":{"lat":40.79,"lon":-73.13,"grid_zone":"LI","gsi_forecast":0.59,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.16,"uhi":0.51,"reserve_margin":0.62,"renew_shortfall":0.48},"raw":{"temp_anomaly_c":1.1,"uhi_intensity_c":8.2,"current_temp_c":22.3,"forecast_max_c":31.6}}}},"SWPP":{"label":"SPP","region":"Great Plains","eia_code":"SWPP","map_center":[38.0,-97.0],"gsi_mean":0.44,"level":"MODERATE","color":"#eab308","zones":{"Kansas City":{"lat":39.1,"lon":-94.58,"grid_zone":"SPP-KS","gsi_forecast":0.47,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.15,"uhi":0.41,"reserve_margin":0.58,"renew_shortfall":0.35},"raw":{"temp_anomaly_c":1.1,"uhi_intensity_c":6.5,"current_temp_c":21.4,"forecast_max_c":32.1}},"Oklahoma City":{"lat":35.47,"lon":-97.52,"grid_zone":"SPP-OK","gsi_forecast":0.49,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.19,"uhi":0.36,"reserve_margin":0.58,"renew_shortfall":0.35},"raw":{"temp_anomaly_c":1.3,"uhi_intensity_c":5.8,"current_temp_c":24.6,"forecast_max_c":35.2}},"Omaha":{"lat":41.26,"lon":-95.94,"grid_zone":"SPP-NE","gsi_forecast":0.41,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.11,"uhi":0.33,"reserve_margin":0.58,"renew_shortfall":0.35},"raw":{"temp_anomaly_c":0.8,"uhi_intensity_c":5.2,"current_temp_c":18.9,"forecast_max_c":29.8}},"Wichita":{"lat":37.69,"lon":-97.34,"grid_zone":"SPP-KS","gsi_forecast":0.39,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.1,"uhi":0.31,"reserve_margin":0.58,"renew_shortfall":0.35},"raw":{"temp_anomaly_c":0.7,"uhi_intensity_c":4.9,"current_temp_c":22.1,"forecast_max_c":33.4}}}},"ISNE":{"label":"ISO-NE","region":"New England","eia_code":"ISNE","map_center":[43.5,-71.5],"gsi_mean":0.49,"level":"MODERATE","color":"#eab308","zones":{"Boston":{"lat":42.36,"lon":-71.06,"grid_zone":"NEMA","gsi_forecast":0.57,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.18,"uhi":0.54,"reserve_margin":0.6,"renew_shortfall":0.45},"raw":{"temp_anomaly_c":1.3,"uhi_intensity_c":8.7,"current_temp_c":21.8,"forecast_max_c":31.2}},"Hartford":{"lat":41.76,"lon":-72.68,"grid_zone":"CT","gsi_forecast":0.47,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.13,"uhi":0.4,"reserve_margin":0.6,"renew_shortfall":0.45},"raw":{"temp_anomaly_c":0.9,"uhi_intensity_c":6.4,"current_temp_c":20.2,"forecast_max_c":30.1}},"Providence":{"lat":41.82,"lon":-71.42,"grid_zone":"RI","gsi_forecast":0.46,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.11,"uhi":0.37,"reserve_margin":0.6,"renew_shortfall":0.45},"raw":{"temp_anomaly_c":0.8,"uhi_intensity_c":5.9,"current_temp_c":20.9,"forecast_max_c":30.4}},"Portland ME":{"lat":43.66,"lon":-70.26,"grid_zone":"ME","gsi_forecast":0.37,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.07,"uhi":0.26,"reserve_margin":0.6,"renew_shortfall":0.45},"raw":{"temp_anomaly_c":0.5,"uhi_intensity_c":4.2,"current_temp_c":17.4,"forecast_max_c":27.8}}}},"SOCO":{"label":"Southern Co","region":"Southeast","eia_code":"SOCO","map_center":[33.0,-86.0],"gsi_mean":0.51,"level":"MODERATE","color":"#eab308","zones":{"Atlanta":{"lat":33.75,"lon":-84.39,"grid_zone":"GA","gsi_forecast":0.58,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.22,"uhi":0.49,"reserve_margin":0.62,"renew_shortfall":0.55},"raw":{"temp_anomaly_c":1.5,"uhi_intensity_c":7.8,"current_temp_c":26.4,"forecast_max_c":34.8}},"Birmingham":{"lat":33.52,"lon":-86.8,"grid_zone":"AL","gsi_forecast":0.52,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.17,"uhi":0.43,"reserve_margin":0.62,"renew_shortfall":0.55},"raw":{"temp_anomaly_c":1.2,"uhi_intensity_c":6.9,"current_temp_c":25.1,"forecast_max_c":33.6}},"Savannah":{"lat":32.08,"lon":-81.1,"grid_zone":"GA","gsi_forecast":0.48,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.13,"uhi":0.34,"reserve_margin":0.62,"renew_shortfall":0.55},"raw":{"temp_anomaly_c":0.9,"uhi_intensity_c":5.4,"current_temp_c":26.9,"forecast_max_c":33.1}},"Montgomery":{"lat":32.37,"lon":-86.3,"grid_zone":"AL","gsi_forecast":0.47,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.12,"uhi":0.32,"reserve_margin":0.62,"renew_shortfall":0.55},"raw":{"temp_anomaly_c":0.8,"uhi_intensity_c":5.1,"current_temp_c":25.8,"forecast_max_c":33.9}}}},"FPL":{"label":"FPL / Florida","region":"Florida","eia_code":"FPL","map_center":[27.5,-81.5],"gsi_mean":0.55,"level":"HIGH","color":"#f97316","zones":{"Miami":{"lat":25.77,"lon":-80.19,"grid_zone":"FPL-SE","gsi_forecast":0.61,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.24,"uhi":0.45,"reserve_margin":0.68,"renew_shortfall":0.62},"raw":{"temp_anomaly_c":1.7,"uhi_intensity_c":7.2,"current_temp_c":28.9,"forecast_max_c":34.2}},"Orlando":{"lat":28.54,"lon":-81.38,"grid_zone":"FPL-C","gsi_forecast":0.57,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.2,"uhi":0.38,"reserve_margin":0.68,"renew_shortfall":0.62},"raw":{"temp_anomaly_c":1.4,"uhi_intensity_c":6.1,"current_temp_c":27.8,"forecast_max_c":34.6}},"Tampa":{"lat":27.95,"lon":-82.46,"grid_zone":"TECO","gsi_forecast":0.53,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.17,"uhi":0.36,"reserve_margin":0.68,"renew_shortfall":0.62},"raw":{"temp_anomaly_c":1.2,"uhi_intensity_c":5.8,"current_temp_c":27.4,"forecast_max_c":33.9}},"Jacksonville":{"lat":30.33,"lon":-81.66,"grid_zone":"JEA","gsi_forecast":0.5,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.14,"uhi":0.33,"reserve_margin":0.68,"renew_shortfall":0.62},"raw":{"temp_anomaly_c":1.0,"uhi_intensity_c":5.3,"current_temp_c":26.1,"forecast_max_c":33.2}}}},"DUK":{"label":"Duke Energy","region":"Carolinas","eia_code":"DUK","map_center":[35.5,-80.0],"gsi_mean":0.5,"level":"MODERATE","color":"#eab308","zones":{"Charlotte":{"lat":35.23,"lon":-80.84,"grid_zone":"DUK-NC","gsi_forecast":0.55,"level_fore":"HIGH","color_fore":"#f97316","components":{"temp_anomaly":0.19,"uhi":0.46,"reserve_margin":0.61,"renew_shortfall":0.58},"raw":{"temp_anomaly_c":1.3,"uhi_intensity_c":7.4,"current_temp_c":25.8,"forecast_max_c":34.1}},"Raleigh":{"lat":35.78,"lon":-78.64,"grid_zone":"DUK-NC","gsi_forecast":0.52,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.16,"uhi":0.43,"reserve_margin":0.61,"renew_shortfall":0.58},"raw":{"temp_anomaly_c":1.1,"uhi_intensity_c":6.8,"current_temp_c":24.6,"forecast_max_c":33.4}},"Greensboro":{"lat":36.07,"lon":-79.79,"grid_zone":"DUK-NC","gsi_forecast":0.48,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.12,"uhi":0.37,"reserve_margin":0.61,"renew_shortfall":0.58},"raw":{"temp_anomaly_c":0.8,"uhi_intensity_c":5.9,"current_temp_c":24.1,"forecast_max_c":32.8}},"Columbia SC":{"lat":34.0,"lon":-81.03,"grid_zone":"DUK-SC","gsi_forecast":0.47,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.11,"uhi":0.33,"reserve_margin":0.61,"renew_shortfall":0.58},"raw":{"temp_anomaly_c":0.8,"uhi_intensity_c":5.3,"current_temp_c":26.2,"forecast_max_c":33.9}}}},"PACE":{"label":"PacifiCorp East","region":"Rockies","eia_code":"PACE","map_center":[41.0,-111.0],"gsi_mean":0.46,"level":"MODERATE","color":"#eab308","zones":{"Salt Lake City":{"lat":40.76,"lon":-111.89,"grid_zone":"PACE-UT","gsi_forecast":0.54,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.2,"uhi":0.58,"reserve_margin":0.55,"renew_shortfall":0.38},"raw":{"temp_anomaly_c":1.4,"uhi_intensity_c":9.2,"current_temp_c":22.1,"forecast_max_c":36.4}},"Denver":{"lat":39.74,"lon":-104.98,"grid_zone":"PACE-CO","gsi_forecast":0.5,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.16,"uhi":0.51,"reserve_margin":0.55,"renew_shortfall":0.38},"raw":{"temp_anomaly_c":1.1,"uhi_intensity_c":8.1,"current_temp_c":20.8,"forecast_max_c":34.2}},"Boise":{"lat":43.62,"lon":-116.2,"grid_zone":"PACE-ID","gsi_forecast":0.43,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.12,"uhi":0.4,"reserve_margin":0.55,"renew_shortfall":0.38},"raw":{"temp_anomaly_c":0.8,"uhi_intensity_c":6.4,"current_temp_c":18.4,"forecast_max_c":31.8}},"Cheyenne":{"lat":41.14,"lon":-104.82,"grid_zone":"PACE-WY","gsi_forecast":0.38,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.08,"uhi":0.3,"reserve_margin":0.55,"renew_shortfall":0.38},"raw":{"temp_anomaly_c":0.6,"uhi_intensity_c":4.8,"current_temp_c":16.2,"forecast_max_c":28.9}}}},"PACW":{"label":"PacifiCorp West","region":"Pacific NW","eia_code":"PACW","map_center":[45.5,-122.5],"gsi_mean":0.43,"level":"MODERATE","color":"#eab308","zones":{"Portland":{"lat":45.52,"lon":-122.68,"grid_zone":"PACW-OR","gsi_forecast":0.48,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.14,"uhi":0.48,"reserve_margin":0.52,"renew_shortfall":0.32},"raw":{"temp_anomaly_c":1.0,"uhi_intensity_c":7.6,"current_temp_c":16.8,"forecast_max_c":28.2}},"Seattle":{"lat":47.61,"lon":-122.33,"grid_zone":"PACW-WA","gsi_forecast":0.46,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.12,"uhi":0.43,"reserve_margin":0.52,"renew_shortfall":0.32},"raw":{"temp_anomaly_c":0.8,"uhi_intensity_c":6.9,"current_temp_c":15.2,"forecast_max_c":27.4}},"Eugene":{"lat":44.05,"lon":-123.09,"grid_zone":"PACW-OR","gsi_forecast":0.39,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.08,"uhi":0.32,"reserve_margin":0.52,"renew_shortfall":0.32},"raw":{"temp_anomaly_c":0.6,"uhi_intensity_c":5.1,"current_temp_c":15.9,"forecast_max_c":27.1}},"Spokane":{"lat":47.66,"lon":-117.43,"grid_zone":"PACW-WA","gsi_forecast":0.41,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.1,"uhi":0.34,"reserve_margin":0.52,"renew_shortfall":0.32},"raw":{"temp_anomaly_c":0.7,"uhi_intensity_c":5.4,"current_temp_c":14.8,"forecast_max_c":28.9}}}},"AECI":{"label":"AECI","region":"Missouri/Arkansas","eia_code":"AECI","map_center":[36.5,-92.0],"gsi_mean":0.46,"level":"MODERATE","color":"#eab308","zones":{"St. Louis":{"lat":38.63,"lon":-90.2,"grid_zone":"AECI-MO","gsi_forecast":0.53,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.18,"uhi":0.49,"reserve_margin":0.58,"renew_shortfall":0.44},"raw":{"temp_anomaly_c":1.3,"uhi_intensity_c":7.9,"current_temp_c":23.2,"forecast_max_c":32.8}},"Springfield MO":{"lat":37.21,"lon":-93.29,"grid_zone":"AECI-MO","gsi_forecast":0.44,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.12,"uhi":0.33,"reserve_margin":0.58,"renew_shortfall":0.44},"raw":{"temp_anomaly_c":0.8,"uhi_intensity_c":5.3,"current_temp_c":21.8,"forecast_max_c":31.4}},"Little Rock":{"lat":34.75,"lon":-92.29,"grid_zone":"AECI-AR","gsi_forecast":0.48,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.15,"uhi":0.36,"reserve_margin":0.58,"renew_shortfall":0.44},"raw":{"temp_anomaly_c":1.0,"uhi_intensity_c":5.7,"current_temp_c":25.4,"forecast_max_c":33.9}},"Cape Girardeau":{"lat":37.31,"lon":-89.52,"grid_zone":"AECI-MO","gsi_forecast":0.41,"level_fore":"MODERATE","color_fore":"#eab308","components":{"temp_anomaly":0.09,"uhi":0.3,"reserve_margin":0.58,"renew_shortfall":0.44},"raw":{"temp_anomaly_c":0.6,"uhi_intensity_c":4.8,"current_temp_c":22.9,"forecast_max_c":31.8}}}}}};
 
+async function loadData() {
+  // Try fetch first — picks up nightly ETL updates
+  const paths = ['/data/gsi_latest.json', './data/gsi_latest.json'];
   for (const path of paths) {
     try {
       const r = await fetch(path + '?t=' + Date.now());
       if (!r.ok) continue;
-      gsiData = await r.json();
+      const text = await r.text();
+      if (text.includes('NaN')) throw new Error('Invalid JSON: contains NaN');
+      gsiData = JSON.parse(text);
       renderAll();
       return;
     } catch(e) {
-      continue;
+      console.warn('fetch failed for', path, e.message);
     }
   }
-
-  // All paths failed
-  document.getElementById('grid-list').innerHTML =
-    `<div class="loading" style="flex-direction:column;gap:8px;padding:20px;text-align:center;">
-      <div>⚠️ Failed to load GSI data</div>
-      <div style="font-size:11px;color:#6b7280;">
-        Commit public/data/gsi_latest.json to your repo,<br>
-        or run the GitHub Actions workflow manually.
-      </div>
-    </div>`;
-}
-
-function renderAll() {
-  if (!gsiData) return;
-  const ts = new Date(gsiData.generated_at);
-  document.getElementById('last-updated').textContent =
-    'Updated: ' + ts.toUTCString().replace(' GMT','');
-  renderGridList();
-  renderMapMarkers();
-  renderScoreboard();
-}
-
-function renderGridList() {
-  const grids = Object.values(gsiData.grids).sort((a,b) => b.gsi_mean - a.gsi_mean);
-  const html = grids.map(g => `
-    <div class="grid-item" onclick="selectGrid('${g.eia_code}')" id="gi-${g.eia_code}">
-      <div class="grid-item-left">
-        <div class="grid-item-name">${g.label}</div>
-        <div class="grid-item-region">${g.region}</div>
-      </div>
-      <div class="grid-item-right">
-        <div class="gsi-chip" style="${gsiChipStyle(g.level)}">${g.gsi_mean.toFixed(2)}</div>
-        <span class="badge ${badgeClass(g.level)}">${g.level}</span>
-      </div>
-    </div>
-  `).join('');
-  document.getElementById('grid-list').innerHTML = html;
-}
-
-function renderMapMarkers() {
-  Object.values(gsiData.grids).forEach(grid => {
-    Object.entries(grid.zones).forEach(([zoneName, zone]) => {
-      if (!zone.lat || !zone.lon) return;
-
-      const gsi    = zone.gsi_forecast || 0;
-      const level  = zone.level_fore   || 'LOW';
-      const color  = levelColor(level);
-      const radius = 8 + gsi * 16;
-
-      const marker = L.circleMarker([zone.lat, zone.lon], {
-        radius,
-        fillColor:   color,
-        color:       '#ffffff',
-        weight:      1,
-        fillOpacity: 0.75,
-        opacity:     0.6
-      });
-
-      const raw  = zone.raw  || {};
-      const comp = zone.components || {};
-
-      const tempStr = raw.temp_anomaly_c !== undefined
-        ? (raw.temp_anomaly_c > 0 ? '+' : '') + raw.temp_anomaly_c + '°C'
-        : '-';
-
-      marker.bindPopup(`
-        <div class="popup-title">⚡ ${grid.label} — ${zoneName}</div>
-        <div class="popup-row">Zone: <span>${zone.grid_zone || '-'}</span></div>
-        <div class="popup-row">GSI Forecast: <span style="color:${color}">${gsi.toFixed(3)} ${level}</span></div>
-        <div class="popup-row">GSI Historical (2023): <span>${(zone.gsi_historical||0).toFixed(3)}</span></div>
-        <hr style="border-color:#30363d;margin:6px 0">
-        <div class="popup-row">Temp anomaly: <span>${tempStr}</span></div>
-        <div class="popup-row">UHI intensity: <span>${raw.uhi_intensity_c || '-'}°C</span></div>
-        <div class="popup-row">Current temp: <span>${raw.current_temp_c || '-'}°C</span></div>
-        <div class="popup-row">7-day max: <span>${raw.forecast_max_c || '-'}°C</span></div>
-      `, { maxWidth: 240 });
-
-      marker.on('click', () => {
-        selectGrid(grid.eia_code);
-        map.panTo([zone.lat, zone.lon], { animate: true });
-      });
-
-      marker.addTo(map);
-      zoneMarkers[`${grid.eia_code}-${zoneName}`] = marker;
-    });
-  });
-}
-
-function selectGrid(eiaCode) {
-  if (activeGrid) {
-    const prev = document.getElementById(`gi-${activeGrid}`);
-    if (prev) prev.classList.remove('active');
-  }
-  activeGrid = eiaCode;
-
-  const el = document.getElementById(`gi-${eiaCode}`);
-  if (el) { el.classList.add('active'); el.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
-
-  const grid = gsiData.grids[eiaCode];
-  if (!grid) return;
-
-  map.flyTo(grid.map_center, 6, { animate: true, duration: 0.8 });
-  renderZonePanel(grid);
-}
-
-function renderZonePanel(grid) {
-  document.getElementById('zone-panel').style.display = 'block';
-  document.getElementById('zone-panel-title').textContent = grid.label + ' — Zones';
-
-  const compLabels = {
-    temp_anomaly: 'Temp Anom', uhi: 'UHI',
-    reserve_margin: 'Reserve', renew_shortfall: 'Renew'
-  };
-
-  const zones = Object.entries(grid.zones)
-    .filter(([,z]) => !z.error)
-    .sort(([,a],[,b]) => (b.gsi_forecast||0) - (a.gsi_forecast||0));
-
-  const html = zones.map(([name, zone]) => {
-    const comp = zone.components || {};
-    const raw  = zone.raw || {};
-    const tempColor = (raw.temp_anomaly_c > 2) ? '#f97316' : '#e6edf3';
-    const uhiColor  = (raw.uhi_intensity_c > 10) ? '#ef4444' : '#e6edf3';
-    const tempStr   = raw.temp_anomaly_c !== undefined
-      ? (raw.temp_anomaly_c > 0 ? '+' : '') + raw.temp_anomaly_c + '°C' : '-';
-
-    const compBars = Object.entries(comp).map(([k,v]) => `
-      <div class="comp-bar-row">
-        <div class="comp-bar-label">${compLabels[k]||k}</div>
-        <div class="comp-bar-track">
-          <div class="comp-bar-fill" style="width:${Math.round(v*100)}%;background:${compBarColor(k)}"></div>
-        </div>
-        <div class="comp-bar-val">${v.toFixed(2)}</div>
-      </div>`).join('');
-
-    return `
-      <div class="zone-card">
-        <div class="zone-card-header">
-          <div>
-            <div class="zone-name">${name}</div>
-            <div class="zone-sub">${zone.grid_zone || ''}</div>
-          </div>
-          <span class="badge ${badgeClass(zone.level_fore)}">${(zone.gsi_forecast||0).toFixed(3)}</span>
-        </div>
-        <div class="metric-row">
-          <div class="metric">
-            <div class="metric-label">Temp Δ</div>
-            <div class="metric-value" style="color:${tempColor}">${tempStr}</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">UHI</div>
-            <div class="metric-value" style="color:${uhiColor}">${raw.uhi_intensity_c || '-'}°C</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">7d Max</div>
-            <div class="metric-value">${raw.forecast_max_c || '-'}°C</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Now</div>
-            <div class="metric-value">${raw.current_temp_c || '-'}°C</div>
-          </div>
-        </div>
-        <div class="comp-bars">${compBars}</div>
-      </div>`;
-  }).join('');
-
-  document.getElementById('zone-cards').innerHTML = html;
-}
-
-function renderScoreboard() {
-  const allZones = [];
-  Object.values(gsiData.grids).forEach(grid => {
-    Object.entries(grid.zones).forEach(([name, zone]) => {
-      if (zone.gsi_forecast !== undefined) {
-        allZones.push({
-          name, grid: grid.label,
-          gsi: zone.gsi_forecast,
-          level: zone.level_fore,
-          color: levelColor(zone.level_fore)
-        });
-      }
-    });
-  });
-
-  const top5 = allZones.sort((a,b) => b.gsi - a.gsi).slice(0, 5);
-  const html = top5.map((z,i) => `
-    <div class="score-row">
-      <div class="score-row-name">${i+1}. ${z.name} <span style="color:#8b949e;font-size:10px">(${z.grid})</span></div>
-      <div class="score-row-val" style="color:${z.color}">${z.gsi.toFixed(3)}</div>
-    </div>`).join('');
-
-  document.getElementById('scoreboard-rows').innerHTML = html;
-  document.getElementById('scoreboard').style.display = 'block';
+  // Fallback to embedded seed data — always works
+  console.log('Using embedded seed data');
+  gsiData = SEED_DATA;
+  renderAll();
 }
 
 loadData();
