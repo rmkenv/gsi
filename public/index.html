@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grid Stress Index — IQSpatial</title>
+  <title>Grid Stress Index — </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <style>
@@ -74,7 +74,7 @@
   <div class="header-left">
     <div>
       <div class="header-logo">&#9889; Grid Stress Index</div>
-      <div class="header-sub">IQSpatial &middot; Composite satellite + weather + grid signal</div>
+      <div class="header-sub">Composite satellite + weather + grid signal</div>
     </div>
   </div>
   <div class="header-right">
@@ -85,7 +85,14 @@
              cursor:pointer;letter-spacing:0.3px;">
       &deg;C / &deg;F
     </button>
-    <a href="https://github.com/rmkenv" target="_blank" style="font-size:11px;color:#58a6ff;text-decoration:none;">github.com/rmkenv</a>
+    <button onclick="document.getElementById('about-modal').style.display='flex'"
+      style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;
+             border:1px solid #30363d;background:#21262d;color:#e6edf3;
+             cursor:pointer;letter-spacing:0.3px;">
+      About
+    </button>
+    <a href="https://github.com/rmkenv/gsi" target="_blank"
+       style="font-size:11px;color:#58a6ff;text-decoration:none;">GitHub</a>
   </div>
 </header>
 
@@ -292,5 +299,146 @@ loadData();
 // Invalidate map size after DOM fully renders
 setTimeout(() => { map.invalidateSize(); }, 200);
 </script>
+
+<!-- About Modal -->
+<div id="about-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);
+     z-index:9999;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#161b22;border:1px solid #30363d;border-radius:12px;
+              max-width:680px;width:100%;max-height:85vh;overflow-y:auto;
+              padding:28px 32px;position:relative;">
+
+    <button onclick="document.getElementById('about-modal').style.display='none'"
+      style="position:absolute;top:16px;right:16px;background:none;border:none;
+             color:#8b949e;font-size:20px;cursor:pointer;line-height:1;">&#10005;</button>
+
+    <h2 style="color:#e6edf3;font-size:20px;font-weight:700;margin-bottom:6px;">
+      &#9889; Grid Stress Index
+    </h2>
+    <p style="color:#8b949e;font-size:12px;margin-bottom:24px;">
+      Open-source satellite + weather + grid signal &mdash;
+      <a href="https://github.com/rmkenv/gsi" target="_blank" style="color:#58a6ff;">github.com/rmkenv/gsi</a>
+    </p>
+
+    <h3 style="color:#58a6ff;font-size:13px;font-weight:600;text-transform:uppercase;
+               letter-spacing:0.5px;margin-bottom:10px;">What is the GSI?</h3>
+    <p style="color:#c9d1d9;font-size:13px;line-height:1.7;margin-bottom:20px;">
+      The Grid Stress Index (GSI) is a composite 0&ndash;1 score that measures how stressed
+      a local electricity grid is likely to be over the next 7 days. It combines four
+      independent data streams &mdash; two from satellites, two from the power grid &mdash;
+      into a single signal designed to surface risk that weather-station-based load
+      forecasting typically misses.
+    </p>
+
+    <h3 style="color:#58a6ff;font-size:13px;font-weight:600;text-transform:uppercase;
+               letter-spacing:0.5px;margin-bottom:12px;">How it&rsquo;s calculated</h3>
+
+    <div style="display:grid;gap:10px;margin-bottom:20px;">
+      <div style="background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#f97316;flex-shrink:0;"></div>
+          <span style="color:#e6edf3;font-size:13px;font-weight:600;">Temperature Anomaly &mdash; 30%</span>
+        </div>
+        <p style="color:#8b949e;font-size:12px;line-height:1.6;margin:0;">
+          How far above or below the 30-year normal (1991&ndash;2020) the summer peak
+          temperature is, using ERA5 reanalysis from Open-Meteo. A +4&deg;C anomaly
+          scores near maximum; a -2&deg;C anomaly scores near zero.
+        </p>
+      </div>
+
+      <div style="background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#ef4444;flex-shrink:0;"></div>
+          <span style="color:#e6edf3;font-size:13px;font-weight:600;">Urban Heat Island (UHI) Intensity &mdash; 25%</span>
+        </div>
+        <p style="color:#8b949e;font-size:12px;line-height:1.6;margin:0;">
+          The difference between a city&rsquo;s hottest pixels (80th percentile) and coolest
+          pixels (20th percentile) derived from Landsat 8/9 TIRS thermal infrared imagery
+          at 30m resolution via Microsoft Planetary Computer. A large UHI spread means
+          the urban core sustains heat long after sunset, extending peak demand windows.
+          Chicago&rsquo;s 17.3&deg;C and San Diego&rsquo;s 23.9&deg;C spreads are the highest in the dataset.
+        </p>
+      </div>
+
+      <div style="background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#3b82f6;flex-shrink:0;"></div>
+          <span style="color:#e6edf3;font-size:13px;font-weight:600;">Reserve Margin Tightness &mdash; 30%</span>
+        </div>
+        <p style="color:#8b949e;font-size:12px;line-height:1.6;margin:0;">
+          The gap between total generation capacity and peak demand, sourced from the
+          EIA API v2 (hourly). Lower reserve margins mean less buffer against unexpected
+          demand spikes or generator outages. ERCOT&rsquo;s target reserve is 13.75%.
+          Negative reserve margin indicates a supply shortfall.
+        </p>
+      </div>
+
+      <div style="background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0;"></div>
+          <span style="color:#e6edf3;font-size:13px;font-weight:600;">Renewable Generation Shortfall &mdash; 15%</span>
+        </div>
+        <p style="color:#8b949e;font-size:12px;line-height:1.6;margin:0;">
+          The share of total generation coming from solar and wind, sourced from the
+          EIA API v2. When renewable share is low during high-demand periods, the grid
+          relies more heavily on dispatchable fossil generation with less flexibility.
+          This component is the primary driver of CAISO&rsquo;s elevated scores.
+        </p>
+      </div>
+    </div>
+
+    <h3 style="color:#58a6ff;font-size:13px;font-weight:600;text-transform:uppercase;
+               letter-spacing:0.5px;margin-bottom:10px;">How to read the scores</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div style="background:#14532d;border-radius:6px;padding:10px 14px;">
+        <div style="color:#86efac;font-weight:700;font-size:13px;">0.00 &ndash; 0.35 &mdash; LOW</div>
+        <div style="color:#86efac;font-size:11px;margin-top:3px;opacity:0.8;">Normal operating conditions. No elevated stress signal.</div>
+      </div>
+      <div style="background:#713f12;border-radius:6px;padding:10px 14px;">
+        <div style="color:#fde047;font-weight:700;font-size:13px;">0.35 &ndash; 0.55 &mdash; MODERATE</div>
+        <div style="color:#fde047;font-size:11px;margin-top:3px;opacity:0.8;">Elevated but manageable. Monitor conditions.</div>
+      </div>
+      <div style="background:#7c2d12;border-radius:6px;padding:10px 14px;">
+        <div style="color:#fdba74;font-weight:700;font-size:13px;">0.55 &ndash; 0.75 &mdash; HIGH</div>
+        <div style="color:#fdba74;font-size:11px;margin-top:3px;opacity:0.8;">Meaningful stress signal. Demand response programs should be on standby.</div>
+      </div>
+      <div style="background:#7f1d1d;border-radius:6px;padding:10px 14px;">
+        <div style="color:#fca5a5;font-weight:700;font-size:13px;">0.75 &ndash; 1.00 &mdash; CRITICAL</div>
+        <div style="color:#fca5a5;font-size:11px;margin-top:3px;opacity:0.8;">Strong multi-signal convergence. High risk of grid stress events.</div>
+      </div>
+    </div>
+
+    <h3 style="color:#58a6ff;font-size:13px;font-weight:600;text-transform:uppercase;
+               letter-spacing:0.5px;margin-bottom:10px;">Using the dashboard</h3>
+    <ul style="color:#c9d1d9;font-size:13px;line-height:1.8;margin-bottom:20px;padding-left:18px;">
+      <li>The <strong style="color:#e6edf3;">sidebar</strong> lists all 13 US grid operators sorted by mean GSI, highest first.</li>
+      <li>Click any grid operator to fly the map to that region and see per-zone breakdowns.</li>
+      <li>The <strong style="color:#e6edf3;">component bars</strong> in each zone card show which of the four signals is driving the score.</li>
+      <li>Click any <strong style="color:#e6edf3;">circle on the map</strong> for a full zone data popup. Circle size scales with GSI score.</li>
+      <li>The <strong style="color:#e6edf3;">scoreboard</strong> (bottom right) shows the 5 highest-stress zones across all grids.</li>
+      <li>Use the <strong style="color:#e6edf3;">&deg;C / &deg;F toggle</strong> to switch temperature units.</li>
+    </ul>
+
+    <h3 style="color:#58a6ff;font-size:13px;font-weight:600;text-transform:uppercase;
+               letter-spacing:0.5px;margin-bottom:10px;">Data sources</h3>
+    <ul style="color:#c9d1d9;font-size:13px;line-height:1.8;margin-bottom:20px;padding-left:18px;">
+      <li><strong style="color:#e6edf3;">Open-Meteo ERA5 Archive</strong> &mdash; Temperature anomaly and 7-day forecast</li>
+      <li><strong style="color:#e6edf3;">Landsat 8/9 TIRS</strong> via Microsoft Planetary Computer &mdash; Urban Heat Island (pre-computed)</li>
+      <li><strong style="color:#e6edf3;">EIA API v2</strong> &mdash; Hourly generation by fuel type and demand for all 13 grid operators</li>
+      <li>Dashboard updates nightly via GitHub Actions. All data is free and open access.</li>
+    </ul>
+
+    <h3 style="color:#58a6ff;font-size:13px;font-weight:600;text-transform:uppercase;
+               letter-spacing:0.5px;margin-bottom:10px;">Limitations</h3>
+    <p style="color:#c9d1d9;font-size:13px;line-height:1.7;margin-bottom:0;">
+      GSI is a screening tool, not a precision forecast. Temperature anomaly is computed
+      against a 5-year proxy normal rather than a true 30-year climatology. UHI values
+      are pre-computed from Summer 2023 Landsat imagery and updated periodically rather
+      than in real time. Reserve margin and renewable share reflect historical Summer 2023
+      patterns blended with current 7-day temperature forecasts. Do not use GSI as a sole
+      basis for operational grid decisions.
+    </p>
+  </div>
+</div>
+
 </body>
 </html>
