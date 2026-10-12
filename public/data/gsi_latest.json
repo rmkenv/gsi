@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T12:16:59.797801+00:00",
+  "generated_at": "2026-10-12T14:41:43.170739+00:00",
   "grids": {
     "ERCO": {
       "label": "ERCOT",
@@ -9,7 +9,7 @@
         30.5,
         -97.5
       ],
-      "gsi_mean": 0.501,
+      "gsi_mean": 0.513,
       "level": "MODERATE",
       "color": "#eab308",
       "zones": {
@@ -19,13 +19,13 @@
           "grid_zone": "HOUSTON",
           "gsi_historical": 0.683,
           "gsi_current": 0.48,
-          "gsi_forecast": 0.527,
+          "gsi_forecast": 0.553,
           "level_hist": "HIGH",
           "color_hist": "#f97316",
           "level_curr": "MODERATE",
           "color_curr": "#eab308",
-          "level_fore": "MODERATE",
-          "color_fore": "#eab308",
+          "level_fore": "HIGH",
+          "color_fore": "#f97316",
           "components": {
             "temp_anomaly": 0.676,
             "uhi": 0.64,
@@ -35,75 +35,34 @@
           "raw": {
             "temp_anomaly_c": 2.73,
             "uhi_intensity_c": 8.4,
-            "current_temp_c": 19.5,
-            "forecast_max_c": 32.3,
+            "current_temp_c": 27.4,
+            "forecast_max_c": 32.9,
             "forecast_dates": [
-              "2026-10-11",
               "2026-10-12",
               "2026-10-13",
               "2026-10-14",
               "2026-10-15",
               "2026-10-16",
-              "2026-10-17"
+              "2026-10-17",
+              "2026-10-18"
             ],
             "forecast_temps": [
-              31.8,
-              32.1,
               31.9,
               31.7,
-              32.3,
-              30.5,
-              21.9
+              32.9,
+              32.4,
+              31.6,
+              25.7,
+              26.6
             ],
             "normal_c": 33.2,
             "mean_temp_c": 35.9
           }
         },
         "Dallas": {
+          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 32.78,
-          "lon": -96.8,
-          "grid_zone": "NORTH",
-          "gsi_historical": 0.653,
-          "gsi_current": 0.46,
-          "gsi_forecast": 0.477,
-          "level_hist": "HIGH",
-          "color_hist": "#f97316",
-          "level_curr": "MODERATE",
-          "color_curr": "#eab308",
-          "level_fore": "MODERATE",
-          "color_fore": "#eab308",
-          "components": {
-            "temp_anomaly": 0.643,
-            "uhi": 0.56,
-            "reserve_margin": 0.754,
-            "renew_shortfall": 0.625
-          },
-          "raw": {
-            "temp_anomaly_c": 2.5,
-            "uhi_intensity_c": 7.6,
-            "current_temp_c": 21.0,
-            "forecast_max_c": 32.3,
-            "forecast_dates": [
-              "2026-10-11",
-              "2026-10-12",
-              "2026-10-13",
-              "2026-10-14",
-              "2026-10-15",
-              "2026-10-16",
-              "2026-10-17"
-            ],
-            "forecast_temps": [
-              31.4,
-              30.9,
-              32.2,
-              32.3,
-              29.0,
-              22.6,
-              17.4
-            ],
-            "normal_c": 33.9,
-            "mean_temp_c": 36.4
-          }
+          "lon": -96.8
         },
         "San Antonio": {
           "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
@@ -125,9 +84,9 @@
         40.0,
         -77.5
       ],
-      "gsi_mean": 0.5,
-      "level": "MODERATE",
-      "color": "#eab308",
+      "gsi_mean": 0.569,
+      "level": "HIGH",
+      "color": "#f97316",
       "zones": {
         "Philadelphia": {
           "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
@@ -140,9 +99,50 @@
           "lon": -76.61
         },
         "Chicago": {
-          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 41.88,
-          "lon": -87.63
+          "lon": -87.63,
+          "grid_zone": "ComEd",
+          "gsi_historical": 0.59,
+          "gsi_current": 0.519,
+          "gsi_forecast": 0.777,
+          "level_hist": "HIGH",
+          "color_hist": "#f97316",
+          "level_curr": "MODERATE",
+          "color_curr": "#eab308",
+          "level_fore": "CRITICAL",
+          "color_fore": "#ef4444",
+          "components": {
+            "temp_anomaly": 0.234,
+            "uhi": 1.0,
+            "reserve_margin": 0.586,
+            "renew_shortfall": 0.625
+          },
+          "raw": {
+            "temp_anomaly_c": -0.36,
+            "uhi_intensity_c": 17.3,
+            "current_temp_c": 20.1,
+            "forecast_max_c": 29.9,
+            "forecast_dates": [
+              "2026-10-12",
+              "2026-10-13",
+              "2026-10-14",
+              "2026-10-15",
+              "2026-10-16",
+              "2026-10-17",
+              "2026-10-18"
+            ],
+            "forecast_temps": [
+              29.9,
+              24.8,
+              19.7,
+              14.6,
+              13.7,
+              12.2,
+              16.5
+            ],
+            "normal_c": 25.9,
+            "mean_temp_c": 25.5
+          }
         },
         "DC": {
           "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
@@ -159,101 +159,19 @@
         36.5,
         -119.5
       ],
-      "gsi_mean": 0.699,
-      "level": "HIGH",
-      "color": "#f97316",
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
       "zones": {
         "Los Angeles": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 34.05,
-          "lon": -118.25,
-          "grid_zone": "LADWP",
-          "gsi_historical": 0.577,
-          "gsi_current": 0.553,
-          "gsi_forecast": 0.853,
-          "level_hist": "HIGH",
-          "color_hist": "#f97316",
-          "level_curr": "HIGH",
-          "color_curr": "#f97316",
-          "level_fore": "CRITICAL",
-          "color_fore": "#ef4444",
-          "components": {
-            "temp_anomaly": 0.083,
-            "uhi": 0.64,
-            "reserve_margin": 0.996,
-            "renew_shortfall": 0.625
-          },
-          "raw": {
-            "temp_anomaly_c": -1.42,
-            "uhi_intensity_c": 8.4,
-            "current_temp_c": 20.5,
-            "forecast_max_c": 36.0,
-            "forecast_dates": [
-              "2026-10-11",
-              "2026-10-12",
-              "2026-10-13",
-              "2026-10-14",
-              "2026-10-15",
-              "2026-10-16",
-              "2026-10-17"
-            ],
-            "forecast_temps": [
-              21.6,
-              18.3,
-              23.8,
-              27.9,
-              31.8,
-              36.0,
-              34.3
-            ],
-            "normal_c": 30.3,
-            "mean_temp_c": 28.9
-          }
+          "lon": -118.25
         },
         "San Francisco": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 37.77,
-          "lon": -122.42,
-          "grid_zone": "PG&E",
-          "gsi_historical": 0.643,
-          "gsi_current": 0.643,
-          "gsi_forecast": 0.943,
-          "level_hist": "HIGH",
-          "color_hist": "#f97316",
-          "level_curr": "HIGH",
-          "color_curr": "#f97316",
-          "level_fore": "CRITICAL",
-          "color_fore": "#ef4444",
-          "components": {
-            "temp_anomaly": 0.0,
-            "uhi": 1.0,
-            "reserve_margin": 0.996,
-            "renew_shortfall": 0.625
-          },
-          "raw": {
-            "temp_anomaly_c": -2.26,
-            "uhi_intensity_c": 20.3,
-            "current_temp_c": 9.9,
-            "forecast_max_c": 29.4,
-            "forecast_dates": [
-              "2026-10-11",
-              "2026-10-12",
-              "2026-10-13",
-              "2026-10-14",
-              "2026-10-15",
-              "2026-10-16",
-              "2026-10-17"
-            ],
-            "forecast_temps": [
-              19.5,
-              20.0,
-              21.2,
-              24.7,
-              27.7,
-              29.0,
-              29.4
-            ],
-            "normal_c": 21.5,
-            "mean_temp_c": 19.2
-          }
+          "lon": -122.42
         },
         "Sacramento": {
           "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
@@ -261,7 +179,7 @@
           "lon": -121.49
         },
         "San Diego": {
-          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 32.72,
           "lon": -117.16
         }
@@ -309,55 +227,14 @@
         38.0,
         -97.0
       ],
-      "gsi_mean": 0.53,
+      "gsi_mean": 0.519,
       "level": "MODERATE",
       "color": "#eab308",
       "zones": {
         "Kansas City": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 39.1,
-          "lon": -94.58,
-          "grid_zone": "SPP-KS",
-          "gsi_historical": 0.557,
-          "gsi_current": 0.436,
-          "gsi_forecast": 0.646,
-          "level_hist": "HIGH",
-          "color_hist": "#f97316",
-          "level_curr": "MODERATE",
-          "color_curr": "#eab308",
-          "level_fore": "HIGH",
-          "color_fore": "#f97316",
-          "components": {
-            "temp_anomaly": 0.403,
-            "uhi": 0.45,
-            "reserve_margin": 0.765,
-            "renew_shortfall": 0.625
-          },
-          "raw": {
-            "temp_anomaly_c": 0.82,
-            "uhi_intensity_c": 6.5,
-            "current_temp_c": 17.6,
-            "forecast_max_c": 33.3,
-            "forecast_dates": [
-              "2026-10-11",
-              "2026-10-12",
-              "2026-10-13",
-              "2026-10-14",
-              "2026-10-15",
-              "2026-10-16",
-              "2026-10-17"
-            ],
-            "forecast_temps": [
-              31.2,
-              32.1,
-              33.3,
-              23.7,
-              18.8,
-              13.9,
-              12.3
-            ],
-            "normal_c": 30.4,
-            "mean_temp_c": 31.2
-          }
+          "lon": -94.58
         },
         "Oklahoma City": {
           "lat": 35.47,
@@ -365,7 +242,7 @@
           "grid_zone": "SPP-OK",
           "gsi_historical": 0.552,
           "gsi_current": 0.418,
-          "gsi_forecast": 0.474,
+          "gsi_forecast": 0.483,
           "level_hist": "HIGH",
           "color_hist": "#f97316",
           "level_curr": "MODERATE",
@@ -381,39 +258,80 @@
           "raw": {
             "temp_anomaly_c": 1.13,
             "uhi_intensity_c": 5.8,
-            "current_temp_c": 18.8,
-            "forecast_max_c": 32.0,
+            "current_temp_c": 24.4,
+            "forecast_max_c": 32.2,
             "forecast_dates": [
-              "2026-10-11",
               "2026-10-12",
               "2026-10-13",
               "2026-10-14",
               "2026-10-15",
               "2026-10-16",
-              "2026-10-17"
+              "2026-10-17",
+              "2026-10-18"
             ],
             "forecast_temps": [
-              31.0,
-              31.1,
-              32.0,
-              26.0,
-              21.8,
-              17.2,
-              13.5
+              31.3,
+              32.2,
+              28.7,
+              24.8,
+              16.2,
+              15.7,
+              20.9
             ],
             "normal_c": 32.7,
             "mean_temp_c": 33.8
           }
         },
         "Omaha": {
-          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 41.26,
           "lon": -95.94
         },
         "Wichita": {
-          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 37.69,
-          "lon": -97.34
+          "lon": -97.34,
+          "grid_zone": "SPP-KS",
+          "gsi_historical": 0.512,
+          "gsi_current": 0.396,
+          "gsi_forecast": 0.593,
+          "level_hist": "MODERATE",
+          "color_hist": "#eab308",
+          "level_curr": "MODERATE",
+          "color_curr": "#eab308",
+          "level_fore": "HIGH",
+          "color_fore": "#f97316",
+          "components": {
+            "temp_anomaly": 0.389,
+            "uhi": 0.29,
+            "reserve_margin": 0.765,
+            "renew_shortfall": 0.625
+          },
+          "raw": {
+            "temp_anomaly_c": 0.72,
+            "uhi_intensity_c": 4.9,
+            "current_temp_c": 22.2,
+            "forecast_max_c": 33.6,
+            "forecast_dates": [
+              "2026-10-12",
+              "2026-10-13",
+              "2026-10-14",
+              "2026-10-15",
+              "2026-10-16",
+              "2026-10-17",
+              "2026-10-18"
+            ],
+            "forecast_temps": [
+              31.6,
+              33.6,
+              24.4,
+              21.7,
+              14.3,
+              15.3,
+              20.0
+            ],
+            "normal_c": 31.0,
+            "mean_temp_c": 31.8
+          }
         }
       }
     },
@@ -425,63 +343,73 @@
         42.5,
         -75.0
       ],
-      "gsi_mean": 0.562,
+      "gsi_mean": 0.551,
       "level": "HIGH",
       "color": "#f97316",
       "zones": {
         "New York City": {
+          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 40.71,
-          "lon": -74.01,
-          "grid_zone": "NYC",
-          "gsi_historical": 0.659,
-          "gsi_current": 0.644,
-          "gsi_forecast": 0.644,
+          "lon": -74.01
+        },
+        "Buffalo": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 42.89,
+          "lon": -78.88
+        },
+        "Albany": {
+          "lat": 42.65,
+          "lon": -73.75,
+          "grid_zone": "CAPITAL",
+          "gsi_historical": 0.568,
+          "gsi_current": 0.489,
+          "gsi_forecast": 0.489,
           "level_hist": "HIGH",
           "color_hist": "#f97316",
-          "level_curr": "HIGH",
-          "color_curr": "#f97316",
-          "level_fore": "HIGH",
-          "color_fore": "#f97316",
+          "level_curr": "MODERATE",
+          "color_curr": "#eab308",
+          "level_fore": "MODERATE",
+          "color_fore": "#eab308",
           "components": {
-            "temp_anomaly": 0.05,
-            "uhi": 1.0,
+            "temp_anomaly": 0.266,
+            "uhi": 0.38,
             "reserve_margin": 1.0,
             "renew_shortfall": 0.625
           },
           "raw": {
-            "temp_anomaly_c": -1.65,
-            "uhi_intensity_c": 12.4,
-            "current_temp_c": 14.8,
-            "forecast_max_c": 26.8,
+            "temp_anomaly_c": -0.14,
+            "uhi_intensity_c": 5.8,
+            "current_temp_c": 13.1,
+            "forecast_max_c": 21.8,
             "forecast_dates": [
-              "2026-10-11",
               "2026-10-12",
               "2026-10-13",
               "2026-10-14",
               "2026-10-15",
               "2026-10-16",
-              "2026-10-17"
+              "2026-10-17",
+              "2026-10-18"
             ],
             "forecast_temps": [
-              18.0,
-              20.7,
-              20.8,
-              26.8,
-              21.1,
-              20.7,
-              16.6
+              18.2,
+              18.6,
+              21.8,
+              15.6,
+              15.8,
+              10.8,
+              13.5
             ],
-            "normal_c": 29.4,
-            "mean_temp_c": 27.8
+            "normal_c": 26.6,
+            "mean_temp_c": 26.5
           }
         },
-        "Buffalo": {
-          "lat": 42.89,
-          "lon": -78.88,
-          "grid_zone": "WEST",
-          "gsi_historical": 0.561,
-          "gsi_current": 0.496,
-          "gsi_forecast": 0.603,
+        "Long Island": {
+          "lat": 40.79,
+          "lon": -73.13,
+          "grid_zone": "LI",
+          "gsi_historical": 0.673,
+          "gsi_current": 0.549,
+          "gsi_forecast": 0.716,
           "level_hist": "HIGH",
           "color_hist": "#f97316",
           "level_curr": "MODERATE",
@@ -489,47 +417,37 @@
           "level_fore": "HIGH",
           "color_fore": "#f97316",
           "components": {
-            "temp_anomaly": 0.216,
-            "uhi": 0.41,
+            "temp_anomaly": 0.413,
+            "uhi": 0.62,
             "reserve_margin": 1.0,
             "renew_shortfall": 0.625
           },
           "raw": {
-            "temp_anomaly_c": -0.49,
-            "uhi_intensity_c": 6.1,
-            "current_temp_c": 13.8,
-            "forecast_max_c": 25.2,
+            "temp_anomaly_c": 0.89,
+            "uhi_intensity_c": 8.2,
+            "current_temp_c": 14.7,
+            "forecast_max_c": 27.2,
             "forecast_dates": [
-              "2026-10-11",
               "2026-10-12",
               "2026-10-13",
               "2026-10-14",
               "2026-10-15",
               "2026-10-16",
-              "2026-10-17"
+              "2026-10-17",
+              "2026-10-18"
             ],
             "forecast_temps": [
-              17.0,
-              16.9,
-              25.2,
-              20.1,
+              18.9,
+              18.8,
+              27.2,
+              19.7,
+              18.8,
               14.2,
-              15.3,
-              8.3
+              13.4
             ],
-            "normal_c": 24.7,
-            "mean_temp_c": 24.2
+            "normal_c": 25.3,
+            "mean_temp_c": 26.2
           }
-        },
-        "Albany": {
-          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
-          "lat": 42.65,
-          "lon": -73.75
-        },
-        "Long Island": {
-          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
-          "lat": 40.79,
-          "lon": -73.13
         }
       }
     },
@@ -541,7 +459,7 @@
         43.5,
         -71.5
       ],
-      "gsi_mean": 0.525,
+      "gsi_mean": 0.5,
       "level": "MODERATE",
       "color": "#eab308",
       "zones": {
@@ -561,50 +479,9 @@
           "lon": -71.42
         },
         "Portland ME": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 43.66,
-          "lon": -70.26,
-          "grid_zone": "ME",
-          "gsi_historical": 0.578,
-          "gsi_current": 0.449,
-          "gsi_forecast": 0.599,
-          "level_hist": "HIGH",
-          "color_hist": "#f97316",
-          "level_curr": "MODERATE",
-          "color_curr": "#eab308",
-          "level_fore": "HIGH",
-          "color_fore": "#f97316",
-          "components": {
-            "temp_anomaly": 0.431,
-            "uhi": 0.22,
-            "reserve_margin": 1.0,
-            "renew_shortfall": 0.625
-          },
-          "raw": {
-            "temp_anomaly_c": 1.02,
-            "uhi_intensity_c": 4.2,
-            "current_temp_c": 4.6,
-            "forecast_max_c": 24.2,
-            "forecast_dates": [
-              "2026-10-11",
-              "2026-10-12",
-              "2026-10-13",
-              "2026-10-14",
-              "2026-10-15",
-              "2026-10-16",
-              "2026-10-17"
-            ],
-            "forecast_temps": [
-              15.0,
-              20.5,
-              13.9,
-              24.2,
-              14.8,
-              12.4,
-              13.4
-            ],
-            "normal_c": 22.7,
-            "mean_temp_c": 23.7
-          }
+          "lon": -70.26
         }
       }
     },
@@ -616,14 +493,55 @@
         33.0,
         -86.0
       ],
-      "gsi_mean": 0.466,
+      "gsi_mean": 0.514,
       "level": "MODERATE",
       "color": "#eab308",
       "zones": {
         "Atlanta": {
-          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 33.75,
-          "lon": -84.39
+          "lon": -84.39,
+          "grid_zone": "GA",
+          "gsi_historical": 0.518,
+          "gsi_current": 0.418,
+          "gsi_forecast": 0.555,
+          "level_hist": "MODERATE",
+          "color_hist": "#eab308",
+          "level_curr": "MODERATE",
+          "color_curr": "#eab308",
+          "level_fore": "HIGH",
+          "color_fore": "#f97316",
+          "components": {
+            "temp_anomaly": 0.331,
+            "uhi": 0.58,
+            "reserve_margin": 0.598,
+            "renew_shortfall": 0.625
+          },
+          "raw": {
+            "temp_anomaly_c": 0.32,
+            "uhi_intensity_c": 7.8,
+            "current_temp_c": 20.7,
+            "forecast_max_c": 32.0,
+            "forecast_dates": [
+              "2026-10-12",
+              "2026-10-13",
+              "2026-10-14",
+              "2026-10-15",
+              "2026-10-16",
+              "2026-10-17",
+              "2026-10-18"
+            ],
+            "forecast_temps": [
+              26.5,
+              29.8,
+              32.0,
+              31.8,
+              30.3,
+              22.0,
+              18.9
+            ],
+            "normal_c": 30.8,
+            "mean_temp_c": 31.1
+          }
         },
         "Birmingham": {
           "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
@@ -636,50 +554,9 @@
           "lon": -81.1
         },
         "Montgomery": {
+          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 32.37,
-          "lon": -86.3,
-          "grid_zone": "AL",
-          "gsi_historical": 0.444,
-          "gsi_current": 0.351,
-          "gsi_forecast": 0.363,
-          "level_hist": "MODERATE",
-          "color_hist": "#eab308",
-          "level_curr": "MODERATE",
-          "color_curr": "#eab308",
-          "level_fore": "MODERATE",
-          "color_fore": "#eab308",
-          "components": {
-            "temp_anomaly": 0.311,
-            "uhi": 0.31,
-            "reserve_margin": 0.598,
-            "renew_shortfall": 0.625
-          },
-          "raw": {
-            "temp_anomaly_c": 0.18,
-            "uhi_intensity_c": 5.1,
-            "current_temp_c": 15.2,
-            "forecast_max_c": 31.6,
-            "forecast_dates": [
-              "2026-10-11",
-              "2026-10-12",
-              "2026-10-13",
-              "2026-10-14",
-              "2026-10-15",
-              "2026-10-16",
-              "2026-10-17"
-            ],
-            "forecast_temps": [
-              26.4,
-              31.4,
-              31.1,
-              31.6,
-              31.4,
-              30.6,
-              17.0
-            ],
-            "normal_c": 33.3,
-            "mean_temp_c": 33.5
-          }
+          "lon": -86.3
         }
       }
     },
@@ -696,9 +573,50 @@
       "color": "#eab308",
       "zones": {
         "Miami": {
-          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 25.77,
-          "lon": -80.19
+          "lon": -80.19,
+          "grid_zone": "FPL-SE",
+          "gsi_historical": 0.553,
+          "gsi_current": 0.433,
+          "gsi_forecast": 0.54,
+          "level_hist": "HIGH",
+          "color_hist": "#f97316",
+          "level_curr": "MODERATE",
+          "color_curr": "#eab308",
+          "level_fore": "MODERATE",
+          "color_fore": "#eab308",
+          "components": {
+            "temp_anomaly": 0.4,
+            "uhi": 0.52,
+            "reserve_margin": 0.697,
+            "renew_shortfall": 0.625
+          },
+          "raw": {
+            "temp_anomaly_c": 0.8,
+            "uhi_intensity_c": 7.2,
+            "current_temp_c": 28.0,
+            "forecast_max_c": 31.0,
+            "forecast_dates": [
+              "2026-10-12",
+              "2026-10-13",
+              "2026-10-14",
+              "2026-10-15",
+              "2026-10-16",
+              "2026-10-17",
+              "2026-10-18"
+            ],
+            "forecast_temps": [
+              31.0,
+              30.0,
+              29.2,
+              30.1,
+              30.2,
+              29.6,
+              27.9
+            ],
+            "normal_c": 30.5,
+            "mean_temp_c": 31.3
+          }
         },
         "Orlando": {
           "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
@@ -711,50 +629,9 @@
           "lon": -82.46
         },
         "Jacksonville": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 30.33,
-          "lon": -81.66,
-          "grid_zone": "JEA",
-          "gsi_historical": 0.465,
-          "gsi_current": 0.385,
-          "gsi_forecast": 0.54,
-          "level_hist": "MODERATE",
-          "color_hist": "#eab308",
-          "level_curr": "MODERATE",
-          "color_curr": "#eab308",
-          "level_fore": "MODERATE",
-          "color_fore": "#eab308",
-          "components": {
-            "temp_anomaly": 0.266,
-            "uhi": 0.33,
-            "reserve_margin": 0.697,
-            "renew_shortfall": 0.625
-          },
-          "raw": {
-            "temp_anomaly_c": -0.14,
-            "uhi_intensity_c": 5.3,
-            "current_temp_c": 23.1,
-            "forecast_max_c": 33.7,
-            "forecast_dates": [
-              "2026-10-11",
-              "2026-10-12",
-              "2026-10-13",
-              "2026-10-14",
-              "2026-10-15",
-              "2026-10-16",
-              "2026-10-17"
-            ],
-            "forecast_temps": [
-              25.8,
-              24.9,
-              31.9,
-              31.0,
-              30.2,
-              33.7,
-              27.5
-            ],
-            "normal_c": 32.1,
-            "mean_temp_c": 31.9
-          }
+          "lon": -81.66
         }
       }
     },
@@ -766,32 +643,17 @@
         35.5,
         -80.0
       ],
-      "gsi_mean": 0.507,
+      "gsi_mean": 0.503,
       "level": "MODERATE",
       "color": "#eab308",
       "zones": {
         "Charlotte": {
-          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 35.23,
-          "lon": -80.84
-        },
-        "Raleigh": {
-          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
-          "lat": 35.78,
-          "lon": -78.64
-        },
-        "Greensboro": {
-          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
-          "lat": 36.07,
-          "lon": -79.79
-        },
-        "Columbia SC": {
-          "lat": 34.0,
-          "lon": -81.03,
-          "grid_zone": "DUK-SC",
-          "gsi_historical": 0.516,
-          "gsi_current": 0.381,
-          "gsi_forecast": 0.527,
+          "lon": -80.84,
+          "grid_zone": "DUK-NC",
+          "gsi_historical": 0.501,
+          "gsi_current": 0.434,
+          "gsi_forecast": 0.511,
           "level_hist": "MODERATE",
           "color_hist": "#eab308",
           "level_curr": "MODERATE",
@@ -799,37 +661,52 @@
           "level_fore": "MODERATE",
           "color_fore": "#eab308",
           "components": {
-            "temp_anomaly": 0.449,
-            "uhi": 0.33,
+            "temp_anomaly": 0.224,
+            "uhi": 0.54,
             "reserve_margin": 0.684,
             "renew_shortfall": 0.625
           },
           "raw": {
-            "temp_anomaly_c": 1.14,
-            "uhi_intensity_c": 5.3,
-            "current_temp_c": 23.1,
-            "forecast_max_c": 32.2,
+            "temp_anomaly_c": -0.43,
+            "uhi_intensity_c": 7.4,
+            "current_temp_c": 21.6,
+            "forecast_max_c": 30.9,
             "forecast_dates": [
-              "2026-10-11",
               "2026-10-12",
               "2026-10-13",
               "2026-10-14",
               "2026-10-15",
               "2026-10-16",
-              "2026-10-17"
+              "2026-10-17",
+              "2026-10-18"
             ],
             "forecast_temps": [
-              24.3,
-              27.3,
-              31.2,
-              31.5,
-              31.9,
-              32.2,
-              23.8
+              25.3,
+              27.9,
+              30.0,
+              30.9,
+              30.6,
+              17.7,
+              17.1
             ],
-            "normal_c": 30.8,
-            "mean_temp_c": 31.9
+            "normal_c": 31.1,
+            "mean_temp_c": 30.7
           }
+        },
+        "Raleigh": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 35.78,
+          "lon": -78.64
+        },
+        "Greensboro": {
+          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 36.07,
+          "lon": -79.79
+        },
+        "Columbia SC": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 34.0,
+          "lon": -81.03
         }
       }
     },
@@ -841,14 +718,55 @@
         41.0,
         -111.0
       ],
-      "gsi_mean": 0.487,
+      "gsi_mean": 0.504,
       "level": "MODERATE",
       "color": "#eab308",
       "zones": {
         "Salt Lake City": {
-          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 40.76,
-          "lon": -111.89
+          "lon": -111.89,
+          "grid_zone": "PACE-UT",
+          "gsi_historical": 0.691,
+          "gsi_current": 0.564,
+          "gsi_forecast": 0.564,
+          "level_hist": "HIGH",
+          "color_hist": "#f97316",
+          "level_curr": "HIGH",
+          "color_curr": "#f97316",
+          "level_fore": "HIGH",
+          "color_fore": "#f97316",
+          "components": {
+            "temp_anomaly": 0.424,
+            "uhi": 0.72,
+            "reserve_margin": 0.966,
+            "renew_shortfall": 0.625
+          },
+          "raw": {
+            "temp_anomaly_c": 0.97,
+            "uhi_intensity_c": 9.2,
+            "current_temp_c": 12.3,
+            "forecast_max_c": 22.2,
+            "forecast_dates": [
+              "2026-10-12",
+              "2026-10-13",
+              "2026-10-14",
+              "2026-10-15",
+              "2026-10-16",
+              "2026-10-17",
+              "2026-10-18"
+            ],
+            "forecast_temps": [
+              14.7,
+              10.0,
+              13.8,
+              18.4,
+              21.1,
+              21.9,
+              22.2
+            ],
+            "normal_c": 29.8,
+            "mean_temp_c": 30.8
+          }
         },
         "Denver": {
           "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
@@ -856,56 +774,15 @@
           "lon": -104.98
         },
         "Boise": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 43.62,
-          "lon": -116.2,
-          "grid_zone": "PACE-ID",
-          "gsi_historical": 0.637,
-          "gsi_current": 0.494,
-          "gsi_forecast": 0.494,
-          "level_hist": "HIGH",
-          "color_hist": "#f97316",
-          "level_curr": "MODERATE",
-          "color_curr": "#eab308",
-          "level_fore": "MODERATE",
-          "color_fore": "#eab308",
-          "components": {
-            "temp_anomaly": 0.479,
-            "uhi": 0.44,
-            "reserve_margin": 0.966,
-            "renew_shortfall": 0.625
-          },
-          "raw": {
-            "temp_anomaly_c": 1.35,
-            "uhi_intensity_c": 6.4,
-            "current_temp_c": 8.4,
-            "forecast_max_c": 25.0,
-            "forecast_dates": [
-              "2026-10-11",
-              "2026-10-12",
-              "2026-10-13",
-              "2026-10-14",
-              "2026-10-15",
-              "2026-10-16",
-              "2026-10-17"
-            ],
-            "forecast_temps": [
-              14.0,
-              9.9,
-              16.2,
-              18.7,
-              21.3,
-              23.9,
-              25.0
-            ],
-            "normal_c": 30.1,
-            "mean_temp_c": 31.4
-          }
+          "lon": -116.2
         },
         "Cheyenne": {
           "lat": 41.14,
           "lon": -104.82,
           "grid_zone": "PACE-WY",
-          "gsi_historical": 0.491,
+          "gsi_historical": 0.512,
           "gsi_current": 0.454,
           "gsi_forecast": 0.454,
           "level_hist": "MODERATE",
@@ -915,35 +792,35 @@
           "level_fore": "MODERATE",
           "color_fore": "#eab308",
           "components": {
-            "temp_anomaly": 0.123,
+            "temp_anomaly": 0.196,
             "uhi": 0.28,
             "reserve_margin": 0.966,
             "renew_shortfall": 0.625
           },
           "raw": {
-            "temp_anomaly_c": -1.14,
+            "temp_anomaly_c": -0.63,
             "uhi_intensity_c": 4.8,
-            "current_temp_c": 12.5,
-            "forecast_max_c": 23.2,
+            "current_temp_c": 15.9,
+            "forecast_max_c": 22.8,
             "forecast_dates": [
-              "2026-10-11",
               "2026-10-12",
               "2026-10-13",
               "2026-10-14",
               "2026-10-15",
               "2026-10-16",
-              "2026-10-17"
+              "2026-10-17",
+              "2026-10-18"
             ],
             "forecast_temps": [
-              23.2,
-              22.2,
-              16.1,
-              8.5,
-              13.7,
-              9.2,
-              20.1
+              22.8,
+              13.6,
+              7.1,
+              10.0,
+              10.9,
+              22.0,
+              19.8
             ],
-            "normal_c": 26.4,
+            "normal_c": 25.9,
             "mean_temp_c": 25.2
           }
         }
@@ -957,58 +834,17 @@
         45.5,
         -122.5
       ],
-      "gsi_mean": 0.556,
-      "level": "HIGH",
-      "color": "#f97316",
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
       "zones": {
         "Portland": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 45.52,
-          "lon": -122.68,
-          "grid_zone": "PACW-OR",
-          "gsi_historical": 0.79,
-          "gsi_current": 0.534,
-          "gsi_forecast": 0.744,
-          "level_hist": "CRITICAL",
-          "color_hist": "#ef4444",
-          "level_curr": "MODERATE",
-          "color_curr": "#eab308",
-          "level_fore": "HIGH",
-          "color_fore": "#f97316",
-          "components": {
-            "temp_anomaly": 0.853,
-            "uhi": 0.56,
-            "reserve_margin": 1.0,
-            "renew_shortfall": 0.625
-          },
-          "raw": {
-            "temp_anomaly_c": 3.97,
-            "uhi_intensity_c": 7.6,
-            "current_temp_c": 5.4,
-            "forecast_max_c": 26.9,
-            "forecast_dates": [
-              "2026-10-11",
-              "2026-10-12",
-              "2026-10-13",
-              "2026-10-14",
-              "2026-10-15",
-              "2026-10-16",
-              "2026-10-17"
-            ],
-            "forecast_temps": [
-              16.3,
-              17.3,
-              13.4,
-              22.3,
-              26.2,
-              26.9,
-              22.7
-            ],
-            "normal_c": 24.0,
-            "mean_temp_c": 28.0
-          }
+          "lon": -122.68
         },
         "Seattle": {
-          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 47.61,
           "lon": -122.33
         },
@@ -1018,50 +854,9 @@
           "lon": -123.09
         },
         "Spokane": {
+          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 47.66,
-          "lon": -117.43,
-          "grid_zone": "PACW-WA",
-          "gsi_historical": 0.658,
-          "gsi_current": 0.479,
-          "gsi_forecast": 0.479,
-          "level_hist": "HIGH",
-          "color_hist": "#f97316",
-          "level_curr": "MODERATE",
-          "color_curr": "#eab308",
-          "level_fore": "MODERATE",
-          "color_fore": "#eab308",
-          "components": {
-            "temp_anomaly": 0.597,
-            "uhi": 0.34,
-            "reserve_margin": 1.0,
-            "renew_shortfall": 0.625
-          },
-          "raw": {
-            "temp_anomaly_c": 2.18,
-            "uhi_intensity_c": 5.4,
-            "current_temp_c": 7.3,
-            "forecast_max_c": 21.0,
-            "forecast_dates": [
-              "2026-10-11",
-              "2026-10-12",
-              "2026-10-13",
-              "2026-10-14",
-              "2026-10-15",
-              "2026-10-16",
-              "2026-10-17"
-            ],
-            "forecast_temps": [
-              12.6,
-              14.6,
-              15.2,
-              17.4,
-              19.0,
-              20.1,
-              21.0
-            ],
-            "normal_c": 27.1,
-            "mean_temp_c": 29.3
-          }
+          "lon": -117.43
         }
       }
     },
@@ -1073,73 +868,68 @@
         36.5,
         -92.0
       ],
-      "gsi_mean": 0.628,
+      "gsi_mean": 0.563,
       "level": "HIGH",
       "color": "#f97316",
       "zones": {
         "St. Louis": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 38.63,
-          "lon": -90.2,
+          "lon": -90.2
+        },
+        "Springfield MO": {
+          "lat": 37.21,
+          "lon": -93.29,
           "grid_zone": "AECI-MO",
-          "gsi_historical": 0.674,
-          "gsi_current": 0.541,
-          "gsi_forecast": 0.841,
+          "gsi_historical": 0.637,
+          "gsi_current": 0.476,
+          "gsi_forecast": 0.682,
           "level_hist": "HIGH",
           "color_hist": "#f97316",
           "level_curr": "MODERATE",
           "color_curr": "#eab308",
-          "level_fore": "CRITICAL",
-          "color_fore": "#ef4444",
+          "level_fore": "HIGH",
+          "color_fore": "#f97316",
           "components": {
-            "temp_anomaly": 0.443,
-            "uhi": 0.59,
+            "temp_anomaly": 0.536,
+            "uhi": 0.33,
             "reserve_margin": 1.0,
             "renew_shortfall": 0.625
           },
           "raw": {
-            "temp_anomaly_c": 1.1,
-            "uhi_intensity_c": 7.9,
-            "current_temp_c": 10.1,
-            "forecast_max_c": 34.9,
+            "temp_anomaly_c": 1.75,
+            "uhi_intensity_c": 5.3,
+            "current_temp_c": 25.8,
+            "forecast_max_c": 32.5,
             "forecast_dates": [
-              "2026-10-11",
               "2026-10-12",
               "2026-10-13",
               "2026-10-14",
               "2026-10-15",
               "2026-10-16",
-              "2026-10-17"
+              "2026-10-17",
+              "2026-10-18"
             ],
             "forecast_temps": [
-              29.0,
-              32.6,
-              34.9,
-              28.0,
-              22.1,
-              19.4,
-              10.6
+              31.6,
+              32.5,
+              26.2,
+              29.9,
+              19.1,
+              16.9,
+              21.1
             ],
-            "normal_c": 29.6,
-            "mean_temp_c": 30.7
+            "normal_c": 29.7,
+            "mean_temp_c": 31.5
           }
         },
-        "Springfield MO": {
-          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
-          "lat": 37.21,
-          "lon": -93.29
-        },
         "Little Rock": {
-          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
           "lat": 34.75,
-          "lon": -92.29
-        },
-        "Cape Girardeau": {
-          "lat": 37.31,
-          "lon": -89.52,
-          "grid_zone": "AECI-MO",
-          "gsi_historical": 0.529,
-          "gsi_current": 0.464,
-          "gsi_forecast": 0.669,
+          "lon": -92.29,
+          "grid_zone": "AECI-AR",
+          "gsi_historical": 0.545,
+          "gsi_current": 0.486,
+          "gsi_forecast": 0.572,
           "level_hist": "MODERATE",
           "color_hist": "#eab308",
           "level_curr": "MODERATE",
@@ -1147,37 +937,42 @@
           "level_fore": "HIGH",
           "color_fore": "#f97316",
           "components": {
-            "temp_anomaly": 0.219,
-            "uhi": 0.28,
+            "temp_anomaly": 0.194,
+            "uhi": 0.37,
             "reserve_margin": 1.0,
             "renew_shortfall": 0.625
           },
           "raw": {
-            "temp_anomaly_c": -0.47,
-            "uhi_intensity_c": 4.8,
-            "current_temp_c": 11.5,
-            "forecast_max_c": 34.2,
+            "temp_anomaly_c": -0.64,
+            "uhi_intensity_c": 5.7,
+            "current_temp_c": 25.3,
+            "forecast_max_c": 34.0,
             "forecast_dates": [
-              "2026-10-11",
               "2026-10-12",
               "2026-10-13",
               "2026-10-14",
               "2026-10-15",
               "2026-10-16",
-              "2026-10-17"
+              "2026-10-17",
+              "2026-10-18"
             ],
             "forecast_temps": [
-              27.2,
-              30.6,
-              34.2,
-              32.2,
-              29.2,
-              21.1,
-              10.5
+              33.7,
+              33.0,
+              34.0,
+              33.2,
+              24.6,
+              19.5,
+              24.1
             ],
-            "normal_c": 31.4,
-            "mean_temp_c": 30.9
+            "normal_c": 34.0,
+            "mean_temp_c": 33.4
           }
+        },
+        "Cape Girardeau": {
+          "error": "HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 37.31,
+          "lon": -89.52
         }
       }
     }
