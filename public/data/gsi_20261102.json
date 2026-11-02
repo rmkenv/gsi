@@ -1,0 +1,447 @@
+{
+  "generated_at": "2026-11-02T14:59:16.142895+00:00",
+  "grids": {
+    "ERCO": {
+      "label": "ERCOT",
+      "region": "Texas",
+      "eia_code": "ERCO",
+      "map_center": [
+        30.5,
+        -97.5
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "Houston": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=29.76&longitude=-95.37&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 29.76,
+          "lon": -95.37
+        },
+        "Dallas": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=32.78&longitude=-96.8&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 32.78,
+          "lon": -96.8
+        },
+        "San Antonio": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=29.42&longitude=-98.49&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 29.42,
+          "lon": -98.49
+        },
+        "Austin": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=30.27&longitude=-97.74&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 30.27,
+          "lon": -97.74
+        }
+      }
+    },
+    "PJM": {
+      "label": "PJM",
+      "region": "Mid-Atlantic/Midwest",
+      "eia_code": "PJM",
+      "map_center": [
+        40.0,
+        -77.5
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "Philadelphia": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=39.95&longitude=-75.17&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 39.95,
+          "lon": -75.17
+        },
+        "Baltimore": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=39.29&longitude=-76.61&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 39.29,
+          "lon": -76.61
+        },
+        "Chicago": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=41.88&longitude=-87.63&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 41.88,
+          "lon": -87.63
+        },
+        "DC": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=38.91&longitude=-77.04&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 38.91,
+          "lon": -77.04
+        }
+      }
+    },
+    "CISO": {
+      "label": "CAISO",
+      "region": "California",
+      "eia_code": "CISO",
+      "map_center": [
+        36.5,
+        -119.5
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "Los Angeles": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 34.05,
+          "lon": -118.25
+        },
+        "San Francisco": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 37.77,
+          "lon": -122.42
+        },
+        "Sacramento": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 38.58,
+          "lon": -121.49
+        },
+        "San Diego": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 32.72,
+          "lon": -117.16
+        }
+      }
+    },
+    "MISO": {
+      "label": "MISO",
+      "region": "Midwest/South",
+      "eia_code": "MISO",
+      "map_center": [
+        40.0,
+        -88.0
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "Minneapolis": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 44.98,
+          "lon": -93.27
+        },
+        "Indianapolis": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=39.77&longitude=-86.16&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 39.77,
+          "lon": -86.16
+        },
+        "New Orleans": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=29.95&longitude=-90.07&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 29.95,
+          "lon": -90.07
+        },
+        "Detroit": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=42.33&longitude=-83.05&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 42.33,
+          "lon": -83.05
+        }
+      }
+    },
+    "SWPP": {
+      "label": "SPP",
+      "region": "Great Plains",
+      "eia_code": "SWPP",
+      "map_center": [
+        38.0,
+        -97.0
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "Kansas City": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 39.1,
+          "lon": -94.58
+        },
+        "Oklahoma City": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=35.47&longitude=-97.52&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 35.47,
+          "lon": -97.52
+        },
+        "Omaha": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=41.26&longitude=-95.94&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 41.26,
+          "lon": -95.94
+        },
+        "Wichita": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=37.69&longitude=-97.34&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 37.69,
+          "lon": -97.34
+        }
+      }
+    },
+    "NYIS": {
+      "label": "NYISO",
+      "region": "New York",
+      "eia_code": "NYIS",
+      "map_center": [
+        42.5,
+        -75.0
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "New York City": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 40.71,
+          "lon": -74.01
+        },
+        "Buffalo": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 42.89,
+          "lon": -78.88
+        },
+        "Albany": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 42.65,
+          "lon": -73.75
+        },
+        "Long Island": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=40.79&longitude=-73.13&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 40.79,
+          "lon": -73.13
+        }
+      }
+    },
+    "ISNE": {
+      "label": "ISO-NE",
+      "region": "New England",
+      "eia_code": "ISNE",
+      "map_center": [
+        43.5,
+        -71.5
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "Boston": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=42.36&longitude=-71.06&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 42.36,
+          "lon": -71.06
+        },
+        "Hartford": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=41.76&longitude=-72.68&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 41.76,
+          "lon": -72.68
+        },
+        "Providence": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=41.82&longitude=-71.42&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 41.82,
+          "lon": -71.42
+        },
+        "Portland ME": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=43.66&longitude=-70.26&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 43.66,
+          "lon": -70.26
+        }
+      }
+    },
+    "SOCO": {
+      "label": "Southern Co",
+      "region": "Southeast",
+      "eia_code": "SOCO",
+      "map_center": [
+        33.0,
+        -86.0
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "Atlanta": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 33.75,
+          "lon": -84.39
+        },
+        "Birmingham": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 33.52,
+          "lon": -86.8
+        },
+        "Savannah": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 32.08,
+          "lon": -81.1
+        },
+        "Montgomery": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=32.37&longitude=-86.3&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 32.37,
+          "lon": -86.3
+        }
+      }
+    },
+    "FPL": {
+      "label": "FPL / Florida",
+      "region": "Florida",
+      "eia_code": "FPL",
+      "map_center": [
+        27.5,
+        -81.5
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "Miami": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 25.77,
+          "lon": -80.19
+        },
+        "Orlando": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 28.54,
+          "lon": -81.38
+        },
+        "Tampa": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=27.95&longitude=-82.46&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 27.95,
+          "lon": -82.46
+        },
+        "Jacksonville": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=30.33&longitude=-81.66&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 30.33,
+          "lon": -81.66
+        }
+      }
+    },
+    "DUK": {
+      "label": "Duke Energy",
+      "region": "Carolinas",
+      "eia_code": "DUK",
+      "map_center": [
+        35.5,
+        -80.0
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "Charlotte": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=35.23&longitude=-80.84&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 35.23,
+          "lon": -80.84
+        },
+        "Raleigh": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=35.78&longitude=-78.64&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 35.78,
+          "lon": -78.64
+        },
+        "Greensboro": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=36.07&longitude=-79.79&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 36.07,
+          "lon": -79.79
+        },
+        "Columbia SC": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=34.0&longitude=-81.03&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 34.0,
+          "lon": -81.03
+        }
+      }
+    },
+    "PACE": {
+      "label": "PacifiCorp East",
+      "region": "Rockies",
+      "eia_code": "PACE",
+      "map_center": [
+        41.0,
+        -111.0
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "Salt Lake City": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 40.76,
+          "lon": -111.89
+        },
+        "Denver": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 39.74,
+          "lon": -104.98
+        },
+        "Boise": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=43.62&longitude=-116.2&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 43.62,
+          "lon": -116.2
+        },
+        "Cheyenne": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 41.14,
+          "lon": -104.82
+        }
+      }
+    },
+    "PACW": {
+      "label": "PacifiCorp West",
+      "region": "Pacific Northwest",
+      "eia_code": "PACW",
+      "map_center": [
+        45.5,
+        -122.5
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "Portland": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=45.52&longitude=-122.68&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 45.52,
+          "lon": -122.68
+        },
+        "Seattle": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 47.61,
+          "lon": -122.33
+        },
+        "Eugene": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 44.05,
+          "lon": -123.09
+        },
+        "Spokane": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=47.66&longitude=-117.43&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 47.66,
+          "lon": -117.43
+        }
+      }
+    },
+    "AECI": {
+      "label": "AECI",
+      "region": "Missouri/Arkansas",
+      "eia_code": "AECI",
+      "map_center": [
+        36.5,
+        -92.0
+      ],
+      "gsi_mean": 0.5,
+      "level": "MODERATE",
+      "color": "#eab308",
+      "zones": {
+        "St. Louis": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=38.63&longitude=-90.2&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 38.63,
+          "lon": -90.2
+        },
+        "Springfield MO": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=37.21&longitude=-93.29&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 37.21,
+          "lon": -93.29
+        },
+        "Little Rock": {
+          "error": "503 Server Error: Service Unavailable for url: https://archive-api.open-meteo.com/v1/archive?latitude=34.75&longitude=-92.29&start_date=2023-06-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=auto",
+          "lat": 34.75,
+          "lon": -92.29
+        },
+        "Cape Girardeau": {
+          "error": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)",
+          "lat": 37.31,
+          "lon": -89.52
+        }
+      }
+    }
+  }
+}
